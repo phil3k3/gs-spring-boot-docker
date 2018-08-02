@@ -1,5 +1,6 @@
 package hello;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,9 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Application {
 
+    @Value("${message}")
+    private String message;
+
     @RequestMapping("/")
     public String home() {
-        return "Hello Docker World";
+        return this.message;
     }
 
     public static void main(String[] args) {
