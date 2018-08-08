@@ -15,6 +15,12 @@ spec:
       containers:
       - name: spring-boot-app
         image: phil3k3/gs-spring-boot-docker:latest
+        env:
+          - name: message
+            valueFrom:
+              configMapKeyRef:
+                name: my-env
+                key: message
         ports:
         - containerPort: 8080
           name: server
